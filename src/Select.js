@@ -1054,7 +1054,7 @@ const Select = createClass({
 		return {
 			enabled: true,
 			order: 890,
-			function: (data) => {
+			fn: (data) => {
 				this.setState({ placement: data.placement });
 				return data;
 			},
