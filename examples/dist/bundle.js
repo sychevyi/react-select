@@ -6835,7 +6835,7 @@ var Select = (0, _createReactClass2['default'])({
 		return {
 			enabled: true,
 			order: 890,
-			'function': function _function(data) {
+			fn: function fn(data) {
 				_this7.setState({ placement: data.placement });
 				return data;
 			}
