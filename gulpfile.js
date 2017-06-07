@@ -26,10 +26,12 @@ var taskConfig = {
 		files: [
 			'index.html',
 			'standalone.html',
+			'fixed.html',
 			'.gitignore'
 		],
 		scripts: [
-			'app.js'
+			'app.js',
+			'fixed.js'
 		],
 		less: [
 			'example.less'

@@ -3768,6 +3768,7 @@ var Select = (0, _createReactClass2['default'])({
 		options: _propTypes2['default'].array, // array of options
 		pageSize: _propTypes2['default'].number, // number of entries to page when using page up/down keys
 		placeholder: stringOrNode, // field placeholder, displayed when there's no value
+		popperModifiers: _propTypes2['default'].object,
 		required: _propTypes2['default'].bool, // applies HTML5 required attribute when needed
 		resetValue: _propTypes2['default'].any, // value to use when you clear the control
 		scrollMenuIntoView: _propTypes2['default'].bool, // boolean to enable the viewport to shift so that the full menu fully visible when engaged
@@ -3818,6 +3819,7 @@ var Select = (0, _createReactClass2['default'])({
 			optionComponent: _Option2['default'],
 			pageSize: 5,
 			placeholder: 'Select...',
+			popperModifiers: {},
 			required: false,
 			scrollMenuIntoView: true,
 			searchable: true,
@@ -4765,6 +4767,8 @@ var Select = (0, _createReactClass2['default'])({
 	renderOuter: function renderOuter(options, valueArray, focusedOption) {
 		var _this8 = this;
 
+		var popperModifiers = this.props.popperModifiers;
+
 		var menu = this.renderMenu(options, valueArray, focusedOption);
 		if (!menu) {
 			return null;
@@ -4778,7 +4782,7 @@ var Select = (0, _createReactClass2['default'])({
 				},
 				className: 'Select-menu-outer',
 				style: this.props.menuContainerStyle,
-				modifiers: { updatePlacement: this.updatePlacement() }
+				modifiers: _extends({ updatePlacement: this.updatePlacement() }, popperModifiers)
 			},
 			_react2['default'].createElement(
 				'div',

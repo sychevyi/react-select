@@ -106,6 +106,7 @@ const Select = createClass({
 		options: PropTypes.array,             // array of options
 		pageSize: PropTypes.number,           // number of entries to page when using page up/down keys
 		placeholder: stringOrNode,                  // field placeholder, displayed when there's no value
+		popperModifiers: PropTypes.object,
 		required: PropTypes.bool,             // applies HTML5 required attribute when needed
 		resetValue: PropTypes.any,            // value to use when you clear the control
 		scrollMenuIntoView: PropTypes.bool,   // boolean to enable the viewport to shift so that the full menu fully visible when engaged
@@ -156,6 +157,7 @@ const Select = createClass({
 			optionComponent: Option,
 			pageSize: 5,
 			placeholder: 'Select...',
+			popperModifiers: {},
 			required: false,
 			scrollMenuIntoView: true,
 			searchable: true,
@@ -1062,6 +1064,8 @@ const Select = createClass({
 	},
 
 	renderOuter (options, valueArray, focusedOption) {
+		const { popperModifiers } = this.props
+
 		let menu = this.renderMenu(options, valueArray, focusedOption);
 		if (!menu) {
 			return null;
@@ -1072,7 +1076,7 @@ const Select = createClass({
 				ref={ref => this.menuContainer = findDOMNode(ref)}
 				className="Select-menu-outer"
 				style={this.props.menuContainerStyle}
-				modifiers={{ updatePlacement: this.updatePlacement() }}
+				modifiers={{ updatePlacement: this.updatePlacement(), ...popperModifiers }}
 			>
 				<div ref={ref => this.menu = ref} role="listbox" className="Select-menu" id={this._instancePrefix + '-list'}
 						 style={this.props.menuStyle}
